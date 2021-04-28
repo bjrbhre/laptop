@@ -6,6 +6,7 @@ brew upgrade $(brew outdated)
 
 # Binaries
 brew install git
+brew install git-gui
 brew install openssl
 brew install rcm
 brew install vim
