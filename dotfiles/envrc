@@ -1,0 +1,19 @@
+export LC_ALL=en_US.UTF-8
+export EDITOR=vim
+
+# How many times EOF / ctrl-D is ignored before shell is closed
+# export IGNOREEOF=1
+
+export BREW_HOME="/usr/local"
+export CASKROOM="/usr/local/Caskroom"
+# export AWS_CREDENTIALS=~/.aws/credentials
+# export EC2_HOME="$($BREW_HOME/bin/brew --prefix ec2-api-tools)/libexec" # AWS/EC2 Command line interface
+# export RBENV_HOME="$HOME/.rbenv"
+# export RVM_HOME="$HOME/.rvm"
+# export JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
+
+export EMAIL=pierre@cnty.ai
+export GITHUB_USERNAME=bjrbhre
+
+export CODE_DIR="$HOME/Code"  # Directory for coding stuff (git repos)
+export DATA_DIR="$HOME/Data"  # Directory for raw data / databases

@@ -1,0 +1,31 @@
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore_global
+    # pager = cat
+[color]
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+[alias]
+    st = status
+    br = branch
+    ci = commit
+    co = checkout
+    unstage = reset HEAD
+    tree = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    hash = rev-parse --short HEAD
+    review = push origin HEAD:refs/publish/master
+[push]
+    default = current
+[pretty]
+    onelinecustom = format:%h%x09%ae%x09%ad%x09%s
+    onelinecustombar = format:%h|%ae|%ad|%s
+[user]
+	name = Pierre Beauhaire
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[pull]
+	ff = only
+[init]
+	defaultBranch = master

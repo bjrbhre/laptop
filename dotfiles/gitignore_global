@@ -1,0 +1,11 @@
+*~
+.*.swp
+.DS_Store
+.envrc
+.env
+.envrc
+.direnv
+.*.env
+.bash_history
+.composer
+tmp
