@@ -25,10 +25,9 @@ bash admin_setup.sh
 Login as user (with admin privileges) and run
 
 ```
-git clone git@github.com:bjrbhre/laptop.git
-ln -s laptop/dotfiles .dotfiles
-cd laptop
-./scripts/user_setup.sh
-./brew/defaults.sh
-./scripts/macos_preferences_setup.sh
+[ -d laptop ] || git clone git@github.com:bjrbhre/laptop.git
+[ -d .dotfiles ] || ln -s laptop/dotfiles .dotfiles
+./laptop/scripts/user_setup.sh
+./laptop/brew/defaults.sh
+./laptop/scripts/macos_preferences_setup.sh
 ```

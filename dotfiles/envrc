@@ -15,4 +15,4 @@ export CASKROOM="/usr/local/Caskroom"
 export CODE_DIR="$HOME/Code"  # Directory for coding stuff (git repos)
 export DATA_DIR="$HOME/Data"  # Directory for raw data / databases
 
-source_env .env.local
+source_env .envrc.local
