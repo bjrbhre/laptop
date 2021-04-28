@@ -1,0 +1,19 @@
+# ===================================== #
+# Dock
+defaults write com.apple.dock orientation -string left
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock persistent-apps none
+defaults write com.apple.dock tilesize -int 36
+
+# Spaces
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Finder
+defaults write com.apple.finder NewWindowTarget -string PfHm
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME"
+defaults write com.apple.finder FXPreferredViewStyle Nlsv
+
+# iTerm
+defaults write com.googlecode.iterm2 PrefsCustomFolder $HOME/laptop/preferences/iterm
+# ===================================== #
