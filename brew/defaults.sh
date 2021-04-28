@@ -17,6 +17,7 @@ brew install curl
 brew install gnu-sed --with-default-names
 brew install gnu-tar
 brew install jq
+brew install tig
 
 # Image manipulation
 brew install imagemagick
