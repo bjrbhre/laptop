@@ -31,7 +31,7 @@ brew install --appdir="/Applications" docker
 # brew install --appdir="/Applications" figma
 brew install --appdir="/Applications" insomnia
 brew install --appdir="/Applications" microsoft-teams
-
+# wget https://download.seald.io/download/Seald-2.7.0.dmg
 brew install --appdir="/Applications" slack
 brew install --appdir="/Applications" sublime-text
 # brew install --appdir="/Applications" visual-studio-code
