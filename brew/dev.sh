@@ -17,6 +17,11 @@ brew install libyaml # should come after openssl
 brew install coreutils
 brew install yarn
 
+# Fix issue installing python 3.7.6
+# See https://github.com/pyenv/pyenv/issues/1740
+brew install zlib
+brew install bzip2
+
 # Manage multiple runtime versions with a single CLI tool
 brew install asdf
 asdf plugin add python
