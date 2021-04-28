@@ -345,7 +345,7 @@ function export_credentials {
     echo -n "Login: "
     read login
 
-    echo -n "Password: " 
+    echo -n "Password: "
     read -s password
 
     CREDENTIALS="${login}:${password}"
