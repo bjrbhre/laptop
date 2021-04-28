@@ -58,6 +58,19 @@ alias be='bundle exec'
 # security
 alias pwdgen='openssl rand -base64 32'
 
+# aws related
+function awss() {
+    if ! command -v aws-vault >/dev/null; then
+        echo "Missing command aws-vault"
+    elif ! command -v aws >/dev/null; then
+        echo "Missing command aws"
+    elif [ -z "$AWS_VAULT_NAME" ]; then
+        echo "Missing ENV var AWS_VAULT_NAME"
+    else
+        aws-vault exec $AWS_VAULT_NAME -- aws $@
+    fi
+}
+
 # Darwin specific
 if [ "$(uname)" = "Darwin" ];then
 	alias ls="ls -CFG"
