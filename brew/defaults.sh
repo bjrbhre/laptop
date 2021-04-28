@@ -31,7 +31,8 @@ brew install --appdir="/Applications" cryptomator
 brew install --appdir="/Applications" firefox
 brew install --appdir="/Applications" google-drive
 brew install --appdir="/Applications" iterm2
-brew install --appdir="/Applications" istat-menus
+# brew install --appdir="/Applications" istat-menus  # v6
+# wget https://files.bjango.com/istatmenus5/istatmenus5.32.zip  # v5
 brew install --appdir="/Applications" rectangle
 # brew install --appdir="/Applications" libreoffice
 brew install --appdir="/Applications" zoom
