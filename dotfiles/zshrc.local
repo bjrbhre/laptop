@@ -59,7 +59,7 @@ alias be='bundle exec'
 alias pwdgen='openssl rand -base64 32'
 
 # aws related
-function awss() {
+function _aws() {
     if ! command -v aws-vault >/dev/null; then
         echo "Missing command aws-vault"
     elif ! command -v aws >/dev/null; then
