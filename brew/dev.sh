@@ -17,6 +17,9 @@ brew install libyaml # should come after openssl
 brew install coreutils
 brew install yarn
 
+# Databases
+brew install redis
+
 # Fix issue installing python 3.7.6
 # See https://github.com/pyenv/pyenv/issues/1740
 brew install zlib
