@@ -39,8 +39,9 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 #"Preventing Time Machine from prompting to use new hard drives as backup volume"
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-#"Setting screenshots location to ~/Desktop"
-defaults write com.apple.screencapture location -string "$HOME/Documents/screenshots"
+#"Setting screenshots location"
+# mkdir -p $HOME/Documents/Screenshots
+defaults write com.apple.screencapture location -string "$HOME/Documents/Screenshots"
 
 #"Setting screenshot format to PNG"
 defaults write com.apple.screencapture type -string "png"
