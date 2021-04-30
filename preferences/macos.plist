@@ -14,6 +14,37 @@ defaults write com.apple.finder NewWindowTarget -string PfHm
 defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME"
 defaults write com.apple.finder FXPreferredViewStyle Nlsv
 
+#"Display battery percentage" => does not work on Big Sur
+# defaults write com.apple.menuextra.battery ShowPercent YES
+
+#"Saving to disk (not to iCloud) by default"
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+#"Check for software updates daily, not just once per week"
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+#"Disable smart quotes and smart dashes as they are annoying when typing code"
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+#"Showing all filename extensions in Finder by default"
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+#"Disabling the warning when changing a file extension"
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+#"Avoiding the creation of .DS_Store files on network volumes"
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+#"Preventing Time Machine from prompting to use new hard drives as backup volume"
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+#"Setting screenshots location to ~/Desktop"
+defaults write com.apple.screencapture location -string "$HOME/Documents/screenshots"
+
+#"Setting screenshot format to PNG"
+defaults write com.apple.screencapture type -string "png"
+
 # iTerm
 defaults write com.googlecode.iterm2 PrefsCustomFolder $HOME/laptop/preferences/iterm
 # ===================================== #
