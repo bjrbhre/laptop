@@ -51,6 +51,12 @@ defaults write com.apple.screencapture type -string "png"
 # iTerm
 defaults write com.googlecode.iterm2 PrefsCustomFolder $HOME/laptop/preferences/iterm
 
+# Trackpad
+# "Enable touch to click"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+# "Enable Show application windows w. three fingers swipe down
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ...
+
 # ===================================== #
 # Hot corners
 # Possible values:
