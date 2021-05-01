@@ -13,6 +13,8 @@ defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.finder NewWindowTarget -string PfHm
 defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME"
 defaults write com.apple.finder FXPreferredViewStyle Nlsv
+defaults write com.apple.finder ShowPathbar -int 1
+defaults write com.apple.finder ShowStatusBar -int 1
 
 #"Display battery percentage" => does not work on Big Sur
 # defaults write com.apple.menuextra.battery ShowPercent YES
