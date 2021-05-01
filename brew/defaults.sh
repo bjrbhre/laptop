@@ -19,6 +19,8 @@ brew install gnu-sed --with-default-names
 brew install gnu-tar
 brew install jq
 brew install tig
+brew install ncdu
+brew install dos2unix
 
 # Image manipulation
 brew install imagemagick
