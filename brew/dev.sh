@@ -34,7 +34,7 @@ asdf plugin add nodejs
 # Applications
 # brew install --appdir="/Applications" amazon-workspaces
 brew install --appdir="/Applications" aws-vault
-# brew install --appdir="/Applications" charles
+brew install --appdir="/Applications" charles
 brew install --appdir="/Applications" discord
 brew install --appdir="/Applications" homebrew/cask/docker
 # brew install --appdir="/Applications" figma
