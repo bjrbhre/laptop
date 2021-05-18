@@ -102,4 +102,4 @@ ZSH_DISABLE_COMPFIX=true  # Disable warning related to Insecure completion-depen
 export PATH="/usr/local/bin:$PATH"
 eval "$(direnv hook zsh)"
 source /usr/local/opt/asdf/asdf.sh
-source .zshrc.local
+source $HOME/.zshrc.local
