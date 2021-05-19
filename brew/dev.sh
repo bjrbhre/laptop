@@ -12,6 +12,7 @@ brew install the_silver_searcher
 brew install tmux
 brew install watch
 brew install watchman
+brew install gnupg
 
 # Programming language prerequisites and package managers
 brew install libyaml # should come after openssl
