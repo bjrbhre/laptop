@@ -7,6 +7,7 @@ brew install --appdir="/Applications" dropbox
 # brew install --appdir="/Applications" goldencheetah
 # brew install --appdir="/Applications" google-backup-and-sync
 # brew install --appdir="/Applications" google-chrome
+brew install --appdir="/Applications" klavaro
 brew install --appdir="/Applications" molotov
 brew install --appdir="/Applications" musescore
 brew install --appdir="/Applications" scratch
