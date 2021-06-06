@@ -71,6 +71,7 @@ do
     touch $HOME/.dotfiles/$file
   fi
 done
+rcup
 source .envrc.local
 direnv allow .
 
