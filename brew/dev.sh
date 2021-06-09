@@ -13,6 +13,8 @@ brew install tmux
 brew install watch
 brew install watchman
 brew install gnupg
+brew install ack
+brew install entr
 
 # Programming language prerequisites and package managers
 brew install libyaml # should come after openssl
