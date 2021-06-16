@@ -15,6 +15,7 @@ brew install watchman
 brew install gnupg
 brew install ack
 brew install entr
+brew install openvpn
 
 # Programming language prerequisites and package managers
 brew install libyaml # should come after openssl
