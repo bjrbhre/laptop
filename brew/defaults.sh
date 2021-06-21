@@ -28,7 +28,7 @@ brew install imagemagick
 # Applications
 brew install --appdir="/Applications" 1password
 brew install --appdir="/Applications" alfred
-#brew install --appdir="/Applications" clamav
+brew install --appdir="/Applications" clamav
 brew install --appdir="/Applications" caffeine
 brew install --appdir="/Applications" cryptomator
 brew install --appdir="/Applications" firefox
