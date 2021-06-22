@@ -59,7 +59,7 @@ alias be='bundle exec'
 alias pwdgen='openssl rand -base64 32'
 
 # aws related
-function _aws() {
+function _aws_vault() {
     if ! command -v aws-vault >/dev/null; then
         echo "Missing command aws-vault"
     elif ! command -v aws >/dev/null; then
@@ -67,9 +67,13 @@ function _aws() {
     elif [ -z "$AWS_VAULT_NAME" ]; then
         echo "Missing ENV var AWS_VAULT_NAME"
     else
-        aws-vault exec $AWS_VAULT_NAME -- aws $@
+        aws-vault exec $AWS_VAULT_NAME -- $@
     fi
 }
+
+alias _aws='_aws_vault aws'
+alias _kubectl='_aws_vault kubectl'
+alias _terraform='_aws_vault terraform'
 
 # Darwin specific
 if [ "$(uname)" = "Darwin" ];then
