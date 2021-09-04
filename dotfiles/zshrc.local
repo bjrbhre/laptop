@@ -86,7 +86,7 @@ fi
 ###########################################################################
 function csv_header() {
 	delim=$2
-	[ ! -z "$delim" ] || delim=','
+	[ ! -z "$delim" ] || delim='|'
     head -n 1 $1 | tr "$delim" "\n"|nl
 	#for t in $(head -n 1 $1 | sed "s:$delim: :g");do echo $t;done | nl
 }
