@@ -74,6 +74,7 @@ function _aws_vault() {
 alias _aws='_aws_vault aws'
 alias _kubectl='_aws_vault kubectl'
 alias _terraform='_aws_vault terraform'
+alias _dvc='_aws_vault dvc'
 
 # Darwin specific
 if [ "$(uname)" = "Darwin" ];then
