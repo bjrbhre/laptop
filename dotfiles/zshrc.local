@@ -371,8 +371,8 @@ function export_credentials {
 }
 
 
-alias encrypt='openssl aes-256-cbc -a -salt'
-alias decrypt='openssl aes-256-cbc -d -a'
+alias encrypt='openssl aes-256-cbc -a -salt -md sha256'
+alias decrypt='openssl aes-256-cbc -d -a -md sha256'
 
 ###########################################################################
 #                             Applications                               ##
