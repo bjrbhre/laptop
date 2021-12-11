@@ -48,6 +48,8 @@ brew install --appdir="/Applications" microsoft-teams
 brew install --appdir="/Applications" slack
 brew install --appdir="/Applications" sublime-text
 # brew install --appdir="/Applications" visual-studio-code
+brew install --appdir="/Applications" macfuse
+# brew install sshfs  # disabled => use https://osxfuse.github.io/
 
 # Final cleanup
 brew cleanup
