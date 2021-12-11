@@ -10,6 +10,7 @@ brew install --appdir="/Applications" dropbox
 brew install --appdir="/Applications" klavaro
 brew install --appdir="/Applications" molotov
 brew install --appdir="/Applications" musescore
+brew install --appdir="/Applications" nextcloud
 brew install --appdir="/Applications" scratch
 brew install --appdir="/Applications" steam
 # brew install --appdir="/Applications" vlc
