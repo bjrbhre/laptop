@@ -105,8 +105,10 @@ source /usr/local/opt/asdf/asdf.sh
 source $HOME/.zshrc.local
 
 # Uncomment for pyenv/pyenv-venv
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
+fi
