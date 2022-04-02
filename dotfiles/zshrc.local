@@ -171,7 +171,7 @@ alias gc='git commit -v'
 alias gp='git push'
 # gitk issue: see [here](http://comments.gmane.org/gmane.comp.version-control.git/278820)
 # alias gk='gitk --all 2>/dev/null'
-alias gk='LANG=C gitk --all 2>/dev/null'
+alias gk='LANG=C gitk 2>/dev/null'
 alias gt='LANG=C gitk --all 2>/dev/null'
 alias gx='gitx --all 2>/dev/null'
 alias gr='git remote -v'
