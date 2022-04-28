@@ -148,8 +148,8 @@ demo() {
 ###########################################################################
 #                           Docker specific                              ##
 ###########################################################################
-drm() { docker rm $(docker ps -q -a); }
-dri() { docker rmi $(docker images -q); }
+# drm() { docker rm $(docker ps -q -a); }
+# dri() { docker rmi $(docker images -q); }
 alias dps='docker ps -a'
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias db='docker build -t $(repo) .'
