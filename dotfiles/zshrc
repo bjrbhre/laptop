@@ -99,9 +99,13 @@ ZSH_DISABLE_COMPFIX=true  # Disable warning related to Insecure completion-depen
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/local/bin:$PATH"
+export HOMEBREW_PREFIX="/usr/local";
+export HOMEBREW_CELLAR="/usr/local/Cellar";
+export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
 eval "$(direnv hook zsh)"
-export HOMEBREW_PREFIX="$(brew --prefix)"
 source $HOMEBREW_PREFIX/opt/asdf/asdf.sh
 source $HOME/.zshrc.local
 
