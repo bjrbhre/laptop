@@ -4,8 +4,8 @@ export EDITOR=vim
 # How many times EOF / ctrl-D is ignored before shell is closed
 # export IGNOREEOF=1
 
-export BREW_HOME="/usr/local"
-export CASKROOM="/usr/local/Caskroom"
+# export BREW_HOME="/usr/local"
+# export CASKROOM="/usr/local/Caskroom"
 # export AWS_CREDENTIALS=~/.aws/credentials
 # export EC2_HOME="$($BREW_HOME/bin/brew --prefix ec2-api-tools)/libexec" # AWS/EC2 Command line interface
 # export RBENV_HOME="$HOME/.rbenv"
