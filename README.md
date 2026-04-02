@@ -34,3 +34,7 @@ Login as user (with admin privileges) and run
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Third-Party Licenses
+
+This project includes configuration files derived from [LazyVim](https://github.com/LazyVim/LazyVim), which is licensed under the Apache License 2.0. See [config/nvim/LICENSE](config/nvim/LICENSE) for the full Apache License text.
