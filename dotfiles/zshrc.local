@@ -384,7 +384,7 @@ alias chr='open -a Google\ Chrome --args --disable-web-security'
 ###########################################################################
 #                             PYTHON                                     ##
 ###########################################################################
-alias pystart='mise use python@3.14 && uv init && uv venv --python $(mise which python) && echo "source .venv/bin/activate" > .envrc && direnv allow'
+alias pystart='mise use python@3.14 && uv init && uv venv --python 3.14 && echo "source .venv/bin/activate" > .envrc && direnv allow'
 
 ###########################################################################
 #                             Continuity                                 ##
