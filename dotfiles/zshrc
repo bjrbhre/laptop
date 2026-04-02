@@ -45,6 +45,10 @@ export LC_CTYPE=en_US.UTF-8
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
+# Toggle Atuin Off
+alias atuin-off="bindkey '^r' history-incremental-search-backward; add-zsh-hook -d preexec _atuin_preexec"
+# Toggle Atuin On (re-runs the init script)
+alias atuin-on='eval "$(atuin init zsh)"'
 
 # ==========================================
 # 5. UI PLUGINS (Manual Source to avoid Forge [WARN])
