@@ -1,3 +1,7 @@
+# MIT License
+# Copyright © 2021-2026 Pierre Beauhaire
+# See LICENSE file for full license details.
+
 brew install cloc
 brew install exiftool
 brew install gcc

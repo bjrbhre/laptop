@@ -1,3 +1,9 @@
+#!/usr/bin/env bash
+
+# MIT License
+# Copyright © 2021-2026 Pierre Beauhaire
+# See LICENSE file for full license details.
+
 # Setup
 brew tap "universal-ctags/universal-ctags"
 

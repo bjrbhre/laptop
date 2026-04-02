@@ -24,10 +24,13 @@ bash admin_setup.sh
 
 Login as user (with admin privileges) and run
 
-```
-[ -d laptop ] || git clone git@github.com:bjrbhre/laptop.git
+```\n[ -d laptop ] || git clone git@github.com:bjrbhre/laptop.git
 [ -d .dotfiles ] || ln -s laptop/dotfiles .dotfiles
 ./laptop/scripts/user_setup.sh
 ./laptop/brew/defaults.sh
 ./laptop/scripts/macos_preferences_setup.sh
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

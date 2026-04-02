@@ -1,5 +1,9 @@
 #! /usr/bin/env bash
 
+# MIT License
+# Copyright © 2021-2026 Pierre Beauhaire
+# See LICENSE file for full license details.
+
 # Source this file to overwrite defaults MacOS preferences
 #
 # You can script most of the settings changes using the `defaults` command

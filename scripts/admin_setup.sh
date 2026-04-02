@@ -1,5 +1,9 @@
 #! /usr/bin/env bash
 
+# MIT License
+# Copyright © 2021-2026 Pierre Beauhaire
+# See LICENSE file for full license details.
+
 # Recipe
 # - update system software
 # - install command line tools
