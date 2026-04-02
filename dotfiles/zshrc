@@ -1,4 +1,28 @@
 # ==========================================
+# 0. PORTABLE CONFIG ENGINE (XDG)
+# ==========================================
+# 1. Define the target portable directory
+export XDG_CONFIG_HOME="$HOME/laptop/config"
+mkdir -p "$XDG_CONFIG_HOME"
+
+# 2. Self-Healing Symlink Logic
+# If .config is a real directory (not a link), merge it and replace it.
+if [[ ! -L "$HOME/.config" ]]; then
+  if [[ -d "$HOME/.config" ]]; then
+    echo "Syncing physical .config to $XDG_CONFIG_HOME..."
+    cp -rn "$HOME/.config/"* "$XDG_CONFIG_HOME/" 2>/dev/null
+    rm -rf "$HOME/.config"
+  fi
+  ln -s "$XDG_CONFIG_HOME" "$HOME/.config"
+fi
+
+# 3. Optional: Move Data/Cache for full portability
+export XDG_DATA_HOME="$HOME/laptop/share"
+export XDG_STATE_HOME="$HOME/laptop/state"
+export XDG_CACHE_HOME="$HOME/laptop/cache"
+mkdir -p "$XDG_DATA_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
+
+# ==========================================
 # 1. ZSH BASE & HISTORY
 # ==========================================
 autoload -Uz compinit && compinit -u
