@@ -380,3 +380,8 @@ alias decrypt='openssl aes-256-cbc -d -a -md sha256'
 ###########################################################################
 alias seald='/Applications/Seald.app/Contents/MacOS/Seald'
 alias chr='open -a Google\ Chrome --args --disable-web-security'
+
+###########################################################################
+#                             Continuity                                 ##
+###########################################################################
+alias list_ml_instances='aws ec2 describe-instances --region=eu-west-1 --query "Reservations[].Instances[].{launch_time:LaunchTime,id:InstanceId,type:InstanceType,dnsname:PublicDnsName, username:Tags[?Key==\`USERNAME\`]|[0].Value, name:Tags[?Key==\`Name\`]|[0].Value, forever_running:Tags[?Key==\`FOREVER_RUNNING\`]|[0].Value} | sort_by([], &launch_time)" --filters "Name=instance-state-name,Values=running"'
