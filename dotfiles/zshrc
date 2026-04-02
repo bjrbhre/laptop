@@ -1,51 +1,78 @@
 # ==========================================
-# 1. PARAMÈTRES ZSH DE BASE (Pour remplacer les fonctions de base d'Oh My Zsh)
+# 1. ZSH BASE & HISTORY
 # ==========================================
-# Activer l'autocomplétion native de Zsh
-autoload -Uz compinit && compinit
-# Activer la coloration syntaxique de base
+autoload -Uz compinit && compinit -u
 autoload -U colors && colors
 
-# ==========================================
-# 2. HOMEBREW (Chemins vitaux pour les puces Apple Silicon)
-# ==========================================
-export HOMEBREW_PREFIX="/opt/homebrew"
-export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
-export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
-export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin${PATH+:$PATH}"
-export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:"
-export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}"
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+export EDITOR='nvim'
+export VISUAL='nvim'
+alias v='nvim'
 
 # ==========================================
-# 3. OUTILS DE DÉVELOPPEMENT (Environnements virtuels)
+# 2. HOMEBREW & PATHS (Portable)
 # ==========================================
-# Direnv
+if [ -x "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x "/usr/local/bin/brew" ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# Portable path for Forge, uv, and local scripts
+export PATH="$HOME/.local/bin:$PATH"
+
+# ==========================================
+# 3. DEV TOOLS
+# ==========================================
 eval "$(direnv hook zsh)"
-
-# ASDF (Décommenter si vous utilisez ASDF à nouveau)
-# source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+eval "$(mise activate zsh)"
 
 # ==========================================
-# 4. STARSHIP (Le nouveau prompt rapide)
+# 4. PROMPT & SEARCH (English Locale)
 # ==========================================
-# Initialise le prompt moderne. Il remplace le thème "robbyrussell"
+# en_US.UTF-8 ensures maximum compatibility with AI agents & CLI tools
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
 eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
 
 # ==========================================
-# 5. CONFIGURATIONS LOCALES ET ALIAS
+# 5. UI PLUGINS (Manual Source to avoid Forge [WARN])
 # ==========================================
-# Charge vos configurations spécifiques (si le fichier existe)
-if [ -f "$HOME/.zshrc.local" ]; then
-    source "$HOME/.zshrc.local"
+if [ -d "$(brew --prefix)/share/zsh-autosuggestions" ]; then
+  source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
-# Quelques alias pratiques (vous pouvez en ajouter d'autres ici)
-alias ll="ls -la"
-# alias vim="nvim" # À décommenter quand Neovim sera installé
+if [ -d "$(brew --prefix)/share/zsh-syntax-highlighting" ]; then
+  source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+# ==========================================
+# 6. LOCAL CONFIGS
+# ==========================================
+if [ -f "$HOME/.zshrc.local" ]; then
+  source "$HOME/.zshrc.local"
+fi
+
+# ==========================================
+# 7. AGENTIC CODING (Forge)
+# ==========================================
+# >>> forge initialize >>>
+if [[ -z "$_FORGE_PLUGIN_LOADED" ]]; then
+    eval "$(forge zsh plugin)"
+fi
+
+if [[ -z "$_FORGE_THEME_LOADED" ]]; then
+    eval "$(forge zsh theme)"
+fi
+# <<< forge initialize <<<
