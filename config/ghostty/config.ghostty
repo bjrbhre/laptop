@@ -1,0 +1,23 @@
+# --- POLICE ET TEXTE ---
+font-family = "JetBrainsMono Nerd Font"
+font-size = 12
+# Optionnel : épaissit légèrement la police, très agréable sur les écrans Mac (Retina)
+font-thicken = true 
+
+# --- INTERFACE ET FENÊTRE ---
+# Intègre les onglets directement dans la barre de titre macOS pour un look natif et minimaliste
+macos-titlebar-style = tabs
+# Ajoute une petite marge interne pour que le texte ne colle pas aux bords
+window-padding-x = 10
+window-padding-y = 10
+
+# --- THÈME ---
+# Ghostty inclut nativement des centaines de thèmes. 
+# "catppuccin-mocha" ou "tokyonight" sont d'excellents thèmes sombres très reposants.
+theme = catppuccin-mocha
+
+# --- COMPORTEMENT MAC ---
+# Indispensable sur Mac : permet d'utiliser la touche Option (Alt) 
+# pour naviguer mot par mot dans le terminal (Alt+Flèches), comme dans Vim.
+macos-option-as-alt = right
+shell-integration = zsh

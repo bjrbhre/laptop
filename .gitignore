@@ -1,3 +1,7 @@
 dotfiles/envrc.local
 backup
 logs
+# XDG folders
+share
+state
+cache
