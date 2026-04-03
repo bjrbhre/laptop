@@ -1,7 +1,51 @@
-dotfiles/envrc.local
-backup
-logs
-# XDG folders
-share
-state
-cache
+# ==========================================
+# 1. SECRETS & LOCAL OVERRIDES (CRITICAL)
+# ==========================================
+# Consolidates your envrc.local and any other machine-specific files
+*.local
+.envrc
+.python-version
+# If you ever use a 'secrets' folder for keys
+secrets/
+
+# ==========================================
+# 2. SYSTEM & OS JUNK
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# ==========================================
+# 3. XDG / RUNTIME STATE (Consolidated)
+# ==========================================
+# These contain databases, plugins, and temp files
+share/
+state/
+cache/
+logs/
+backup/
+tmp/
+
+# ==========================================
+# 4. APP-SPECIFIC NOISE
+# ==========================================
+# Neovim temporary state (even if symlinked)
+config/nvim/.netrwhist
+config/nvim/undo/
+config/nvim/backups/
+config/nvim/swp/
+config/nvim/*.log
+
+# Pi.dev local state
+config/pi/logs/
+config/pi/cache/
+
+# ==========================================
+# 5. DEVELOPMENT JUNK
+# ==========================================
+.venv/
+__pycache__/
+node_modules/
+.direnv/
