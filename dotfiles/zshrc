@@ -93,14 +93,17 @@ if [ -f "$HOME/.zshrc.local" ]; then
 fi
 
 # ==========================================
-# 7. AGENTIC CODING (Forge)
+# 7. AGENTIC CODING
 # ==========================================
-# >>> forge initialize >>>
+# --- Pi.dev Setup ---
+export PI_CODING_AGENT_DIR="$HOME/laptop/config/pi"
+mkdir -p "$PI_CODING_AGENT_DIR"
+alias π="pi"
+
+# --- Forge initialization ---
 if [[ -z "$_FORGE_PLUGIN_LOADED" ]]; then
     eval "$(forge zsh plugin)"
 fi
-
 if [[ -z "$_FORGE_THEME_LOADED" ]]; then
     eval "$(forge zsh theme)"
 fi
-# <<< forge initialize <<<
