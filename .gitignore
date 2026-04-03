@@ -41,6 +41,8 @@ config/nvim/*.log
 # Pi.dev local state
 config/pi/logs/
 config/pi/cache/
+config/pi/auth.json
+config/pi/sessions/
 
 # ==========================================
 # 5. DEVELOPMENT JUNK
