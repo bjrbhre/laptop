@@ -37,4 +37,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Third-Party Licenses
 
-This project includes configuration files derived from [LazyVim](https://github.com/LazyVim/LazyVim), which is licensed under the Apache License 2.0. See [config/nvim/LICENSE](config/nvim/LICENSE) for the full Apache License text.
+- **LazyVim**: This project includes configuration files derived from [LazyVim](https://github.com/LazyVim/LazyVim), which is licensed under the Apache License 2.0. See [config/nvim/LICENSE](config/nvim/LICENSE) for the full Apache License text.
+
+- **Anthropic skill-creator**: The skill-creator skill ([agents/skills/skill-creator/](agents/skills/skill-creator/)) is inspired by and derived from [Anthropic's skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator), which is licensed under the Apache License 2.0.
