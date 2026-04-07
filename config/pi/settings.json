@@ -2,4 +2,7 @@
   "lastChangelogVersion": "0.64.0",
   "defaultProvider": "openrouter",
   "defaultModel": "google/gemini-3.1-pro-preview",
+  "extensions": [
+    "~/.agents/extensions"
+  ]
 }
