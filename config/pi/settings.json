@@ -1,5 +1,5 @@
 {
   "lastChangelogVersion": "0.64.0",
   "defaultProvider": "openrouter",
-  "defaultModel": "anthropic/claude-sonnet-4.5"
+  "defaultModel": "google/gemini-3.1-pro-preview",
 }
