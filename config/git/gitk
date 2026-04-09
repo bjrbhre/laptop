@@ -59,8 +59,8 @@ set web_browser open
 set workingfilescirclecolor red
 set wrapcomment none
 set wrapdefault none
-set geometry(main) 1470x895+0+33
-set geometry(state) zoomed
+set geometry(main) 1470x895+225+153
+set geometry(state) normal
 set geometry(topwidth) 1470
 set geometry(topheight) 559
 set geometry(pwsash0) "507 1"

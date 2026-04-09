@@ -21,3 +21,13 @@ theme = catppuccin-mocha
 # pour naviguer mot par mot dans le terminal (Alt+Flèches), comme dans Vim.
 macos-option-as-alt = right
 shell-integration = zsh
+
+# --- KEYBINDINGS POUR SPLITS ---
+# Navigation entre les splits (Vim-style)
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+l=goto_split:right
+
+# Fermer le split actuel
+keybind = ctrl+shift+w=close_surface

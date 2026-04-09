@@ -36,8 +36,15 @@ alias guilty='du --max-depth 1 . 2>/dev/null | sort -rn'
 # Miscellaneous tricks and shortcuts
 alias xd='cd ..'
 alias df="df -h"
+alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+
+# coding agents
+alias pic='pi --continue'
+alias pir='pi --resume'
+alias π='pi'
+
 # date with YYYY-MM-DD format
 alias today='date +%Y-%m-%d'
 alias h='history|grep'

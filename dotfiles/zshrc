@@ -39,7 +39,6 @@ setopt HIST_REDUCE_BLANKS
 
 export EDITOR='nvim'
 export VISUAL='nvim'
-alias v='nvim'
 
 # ==========================================
 # 2. HOMEBREW & PATHS (Portable)
@@ -98,7 +97,6 @@ fi
 # --- Pi.dev Setup ---
 export PI_CODING_AGENT_DIR="$HOME/laptop/config/pi"
 mkdir -p "$PI_CODING_AGENT_DIR"
-alias π="pi"
 
 # --- Forge initialization ---
 if [[ -z "$_FORGE_PLUGIN_LOADED" ]]; then
