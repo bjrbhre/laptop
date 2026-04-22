@@ -1,9 +1,9 @@
 {
-  "lastChangelogVersion": "0.65.2",
+  "lastChangelogVersion": "0.68.1",
   "defaultProvider": "openrouter",
-  "defaultModel": "google/gemini-3-flash-preview",
+  "defaultModel": "z-ai/glm-5.1",
   "extensions": [
     "~/.agents/extensions"
   ],
-  "defaultThinkingLevel": "medium"
+  "defaultThinkingLevel": "high"
 }
