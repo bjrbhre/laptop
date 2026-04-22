@@ -98,10 +98,10 @@ fi
 export PI_CODING_AGENT_DIR="$HOME/laptop/config/pi"
 mkdir -p "$PI_CODING_AGENT_DIR"
 
-# --- Forge initialization ---
-if [[ -z "$_FORGE_PLUGIN_LOADED" ]]; then
-    eval "$(forge zsh plugin)"
-fi
-if [[ -z "$_FORGE_THEME_LOADED" ]]; then
-    eval "$(forge zsh theme)"
-fi
+# # --- Forge initialization ---
+# if [[ -z "$_FORGE_PLUGIN_LOADED" ]]; then
+#     eval "$(forge zsh plugin)"
+# fi
+# if [[ -z "$_FORGE_THEME_LOADED" ]]; then
+#     eval "$(forge zsh theme)"
+# fi
