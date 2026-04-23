@@ -43,6 +43,11 @@ config/pi/logs/
 config/pi/cache/
 config/pi/auth.json
 config/pi/sessions/
+config/pi/sessions-analysis/
+config/pi/models.json
+
+# DiaLog
+config/DiaLog
 
 # ==========================================
 # 5. DEVELOPMENT JUNK
