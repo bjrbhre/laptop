@@ -199,6 +199,7 @@ def parse_session(fpath):
     total_cache_write = sum(
         a.get("usage", {}).get("cacheWrite", 0) for a in assistant_msgs
     )
+    total_tokens = total_input + total_output + total_cache_read + total_cache_write
     total_cost = sum(
         a.get("usage", {}).get("cost", {}).get("total", 0) for a in assistant_msgs
     )
@@ -230,6 +231,7 @@ def parse_session(fpath):
         "total_output_tokens": total_output,
         "total_cache_read": total_cache_read,
         "total_cache_write": total_cache_write,
+        "total_tokens": total_tokens,
         "total_cost": total_cost,
         "tool_call_counts": dict(tool_call_counts),
         "user_texts": user_texts,
@@ -309,20 +311,35 @@ def compute_aggregates(sessions, active_threshold):
 
 def build_timeline(sessions):
     """Build a chronological timeline of sessions."""
+    # Group by date
+    by_date = defaultdict(lambda: {
+        "duration_s": 0,
+        "prompts": 0,
+        "tokens": 0,
+        "cost": 0,
+        "sessions": [],
+    })
+    for s in sessions:
+        date = s["session_start"][:10]
+        by_date[date]["duration_s"] += s["active_duration_seconds"]
+        by_date[date]["prompts"] += s["num_user_msgs"]
+        by_date[date]["tokens"] += s.get("total_tokens", 0)
+        by_date[date]["cost"] += s["total_cost"]
+        by_date[date]["sessions"].append(s.get("session_names", [""])[-1] if s.get("session_names") else "")
+
     return sorted(
         [
             {
-                "date": s["session_start"][:10],
-                "start_time": s["session_start"][11:16],
-                "end_time": s["session_end"][11:16],
-                "session_names": s["session_names"],
-                "file": s["file"],
-                "active_minutes": round(s["active_duration_seconds"] / 60, 0),
-                "user_prompts": s["num_user_msgs"],
+                "date": date,
+                "duration_hours": round(d["duration_s"] / 3600, 1),
+                "prompts": d["prompts"],
+                "tokens_m": round(d["tokens"] / 1_000_000, 1),
+                "cost": round(d["cost"], 2),
+                "sessions": d["sessions"],
             }
-            for s in sessions
+            for date, d in by_date.items()
         ],
-        key=lambda x: x["date"] + x["start_time"],
+        key=lambda x: x["date"],
     )
 
 

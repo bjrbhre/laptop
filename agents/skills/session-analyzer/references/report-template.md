@@ -8,12 +8,12 @@ Adapt depth and sections based on the number of sessions and data richness.
 1. **Overview** — table with key metrics (sessions count, period, active time, prompts, tokens, cost)
 2. **Time: User vs Machine** — breakdown of active time, who spends time where, bottleneck analysis
 3. **Tokens & Costs** — input/output/cache breakdown, ratios, cost efficiency
-4. **Session Details** — one subsection per session with: date, duration, tokens, cost, tools, focus summary
+4. **Session Details** — compact table with all sessions: topic, date, duration (h), tokens (M), cost. Include a **Total** row. Followed by one subsection per session with tools and focus summary
 5. **Tools — Aggregation** — by tool and by category, with percentages
 6. **Regulatory/Thematic Analysis** — identify themes from user_texts content (NOT hardcoded keywords)
 7. **Macro-Tasks by Type** — classify sessions by what the user *did*
 8. **Operational Efficiency** — averages, ratios, tokens per dollar
-9. **Session Timeline** — chronological summary
+9. **Session Timeline** — chronological table with: date, duration (h), prompts, tokens (M), cost, themes. Include a **Total** row
 10. **Key Takeaways** — 8-10 actionable insights with narrative
 
 ## Style
