@@ -1,15 +1,17 @@
 ---
-name: session-analyzer
-description: Analyze pi coding agent sessions — stats, tokens, costs, time, tools, themes. Use when the user asks about their pi session usage, wants stats on sessions, or asks to analyze/compare session activity.
+name: pi-sessions-analyzer
+description: Analyze pi coding agent sessions — stats, tokens, costs, time, tools, themes. Use when the user asks about their pi session usage, wants stats on sessions, or asks to analyze/compare session activity. This skill is specific to the pi coding agent session format (.jsonl) and is not compatible with other agent harnesses.
 ---
 
-# Session Analyzer
+# Pi Sessions Analyzer
 
-Analyze pi coding agent sessions: extract stats, identify patterns, produce narrative reports.
+Analyze **pi coding agent** sessions: extract stats, identify patterns, produce narrative reports.
+
+This skill is tightly coupled to the **pi.dev** session format. It parses `.jsonl` files with pi-specific event types (`session`, `session_info`, `message`) and field structures (token usage, model info, tool calls). It is **not** compatible with other agent harnesses.
 
 ## Path Resolution
 
-The script is agnostic of pi. The skill resolves paths:
+Pi stores sessions as `.jsonl` files under a sessions directory. The skill resolves paths:
 
 1. **Sessions path**: `$PI_CODING_AGENT_DIR/sessions/` if the env var exists, else `~/.config/pi/sessions/`
 2. **Output path**: same base directory, replace `sessions/` with `sessions-analysis/`
@@ -38,7 +40,7 @@ When the user says "all sessions":
 ### Step 3: Run the script
 
 ```bash
-python3 ~/.agents/skills/session-analyzer/scripts/session_stats.py \
+python3 ~/.agents/skills/pi-sessions-analyzer/scripts/session_stats.py \
   --sessions <path1> <path2> ... \
   --output <OUTPUT_DIR>/<date>-<slug>-stats.json
 ```
