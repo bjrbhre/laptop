@@ -1,9 +1,13 @@
 {
-  "lastChangelogVersion": "0.70.0",
+  "lastChangelogVersion": "0.70.2",
   "defaultProvider": "openrouter",
   "defaultModel": "z-ai/glm-5.1",
   "extensions": [
-    "~/.agents/extensions"
+    "~/.agents/extensions",
+    "-../../../.agents/extensions/web-search.ts"
   ],
-  "defaultThinkingLevel": "high"
+  "defaultThinkingLevel": "high",
+  "packages": [
+    "npm:pi-smart-fetch"
+  ]
 }
