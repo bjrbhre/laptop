@@ -1,6 +1,15 @@
 /**
  * Env Guard - Block access to .env files
  *
+ * Trimmed version of the original env-guard extension.
+ * Removes the 7-layer obfuscation detection (base64, hex, fromCharCode,
+ * reversed strings, eval, shell globs, concatenation) — an LLM isn't going
+ * to base64-encode ".env" to sneak past a guard. A simple path regex
+ * covers the real threat model.
+ *
+ * Original: cnty-ai/continuity/.cntyai/pi/extensions/env-guard.ts
+ * Trimmed by: pbeauhaire
+ *
  * Prevents reading/writing .env and .env.* files (except .env.example).
  * Intercepts read, write, edit, and bash tool calls.
  */
