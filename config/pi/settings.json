@@ -6,6 +6,9 @@
     "~/.agents/extensions",
     "-../../../.agents/extensions/web-search.ts"
   ],
+  "prompts": [
+    "~/.agents/prompts"
+  ],
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-smart-fetch"
