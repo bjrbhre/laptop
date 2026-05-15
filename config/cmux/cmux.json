@@ -8,11 +8,7 @@
   // cmux creates this template on launch when ~/.config/cmux/cmux.json is missing.
   // Legacy settings.json files are read only as fallback for keys not present here.
 
-  "browser": {
-    "defaultSearchEngine": "duckduckgo"
-  },
-
-  //   "app" : {
+  "app" : {
   //     "warnBeforeQuit" : true,
   //     "openSupportedFilesInCmux" : true,
   //     "menuBarOnly" : false,
@@ -21,7 +17,7 @@
   //     "language" : "system",
   //     "workspaceInheritWorkingDirectory" : true,
   //     "reorderOnNotification" : true,
-  //     "preferredEditor" : "",
+         "preferredEditor" : "nvim",
   //     "warnBeforeClosingTab" : true,
   //     "iMessageMode" : false,
   //     "commandPaletteSearchesAllSurfaces" : false,
@@ -32,7 +28,7 @@
   //     "newWorkspacePlacement" : "afterCurrent",
   //     "minimalMode" : false,
   //     "appIcon" : "automatic"
-  //   },
+  },
 
   //   "terminal" : {
   //     "autoResumeAgentSessions" : true,
@@ -46,7 +42,7 @@
   //     "paneFlash" : true,
   //     "dockBadge" : true,
   //     "hooks" : [
-  // 
+  //
   //     ],
   //     "sound" : "default",
   //     "unreadPaneRing" : true,
@@ -113,15 +109,15 @@
   //     "claudeBinaryPath" : ""
   //   },
 
-  //   "browser" : {
+  "browser" : {
   //     "theme" : "system",
   //     "urlsToAlwaysOpenExternally" : [
-  // 
+  //
   //     ],
   //     "reactGrabVersion" : "0.1.29",
   //     "openTerminalLinksInCmuxBrowser" : true,
   //     "interceptTerminalOpenCommandInCmuxBrowser" : true,
-  //     "defaultSearchEngine" : "google",
+         "defaultSearchEngine" : "duckduckgo",
   //     "insecureHttpHostsAllowedInEmbeddedBrowser" : [
   //       "localhost",
   //       "*.localhost",
@@ -131,11 +127,11 @@
   //       "*.localtest.me"
   //     ],
   //     "hostsToOpenInEmbeddedBrowser" : [
-  // 
+  //
   //     ],
   //     "showSearchSuggestions" : true,
   //     "showImportHintOnBlankTabs" : true
-  //   },
+  },
 
   //   "shortcuts" : {
   //     "bindings" : {
