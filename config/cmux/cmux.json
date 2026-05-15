@@ -8,6 +8,10 @@
   // cmux creates this template on launch when ~/.config/cmux/cmux.json is missing.
   // Legacy settings.json files are read only as fallback for keys not present here.
 
+  "browser": {
+    "defaultSearchEngine": "duckduckgo"
+  },
+
   //   "app" : {
   //     "warnBeforeQuit" : true,
   //     "openSupportedFilesInCmux" : true,
