@@ -26,6 +26,13 @@ mkdir -p "$XDG_DATA_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 # 1. ZSH BASE & HISTORY
 # ==========================================
 autoload -Uz compinit && compinit -u
+
+# Completion matchers (same as oh-my-zsh):
+# 1. Case-insensitive
+# 2. Match after separators (_ - .)
+# 3. Partial/substring match anywhere in the word
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 autoload -U colors && colors
 
 HISTFILE="$HOME/.zsh_history"
