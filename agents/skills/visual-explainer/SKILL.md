@@ -71,7 +71,7 @@ For 4+ section pages with nav: `./references/responsive-nav.md`
 
 ### 4. Deliver
 
-Write to `~/.agent/diagrams/`. Open in browser (`open` on macOS, `xdg-open` on Linux). Tell user the path.
+Write to `~/Downloads/`. Open in browser (`open` on macOS, `xdg-open` on Linux). Tell user the path.
 
 ## Anti-Patterns (Quick Check)
 
