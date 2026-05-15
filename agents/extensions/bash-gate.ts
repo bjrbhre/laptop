@@ -19,7 +19,7 @@
  *   Or run with: pi -e ./bash-gate.ts
  */
 
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 interface DenyPattern {
 	pattern: RegExp;

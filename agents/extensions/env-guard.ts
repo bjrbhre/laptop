@@ -14,7 +14,7 @@
  * Intercepts read, write, edit, and bash tool calls.
  */
 
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const ALLOWED_ENV_FILE = ".env.example";
 
