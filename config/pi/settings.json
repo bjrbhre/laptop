@@ -1,6 +1,7 @@
 {
   "defaultProvider": "openrouter",
   "defaultModel": "z-ai/glm-5.1",
+  "lastChangelogVersion": "0.74.0",
   "extensions": [
     "~/.agents/extensions"
   ],
@@ -15,6 +16,7 @@
         "-dist/index.js"
       ]
     },
-    "../../agents/sandbox/pi-notion-mcp"
+    "../../agents/sandbox/pi-notion-mcp",
+    "npm:pi-cortecs"
   ]
 }
