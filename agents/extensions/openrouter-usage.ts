@@ -124,6 +124,13 @@ export default function (pi: ExtensionAPI) {
   // Monotonic request id to prevent stale fetch responses from overwriting newer state
   let latestFetchRequestId = 0;
 
+  // Track whether we're using an OpenRouter provider
+  let isOpenRouterActive = false;
+
+  function updateOpenRouterStatus(ctx: any) {
+    isOpenRouterActive = ctx.model?.provider === "openrouter";
+  }
+
   // Restore state on session start
   pi.on("session_start", async (_event, ctx) => {
     for (const entry of ctx.sessionManager.getEntries()) {
@@ -132,16 +139,34 @@ export default function (pi: ExtensionAPI) {
         break;
       }
     }
-    
-    // Auto-fetch on session start
-    await fetchUsage();
-    updateFooter(ctx);
+
+    // Only fetch/display when using an OpenRouter provider
+    updateOpenRouterStatus(ctx);
+    if (isOpenRouterActive) {
+      await fetchUsage();
+      updateFooter(ctx);
+    }
+  });
+
+  // Update after model change
+  pi.on("model_select", async (_event, ctx) => {
+    const wasActive = isOpenRouterActive;
+    updateOpenRouterStatus(ctx);
+    if (isOpenRouterActive) {
+      await fetchUsage();
+      updateFooter(ctx);
+    } else if (wasActive) {
+      // Clear footer when switching away from OpenRouter
+      ctx.ui.setStatus("openrouter", undefined);
+    }
   });
 
   // Update after each agent turn — fire-and-forget so the footer
   // updates as soon as the network response arrives, not blocking the turn.
   pi.on("agent_end", (_event, ctx) => {
-    fetchUsage().then(() => updateFooter(ctx));
+    if (isOpenRouterActive) {
+      fetchUsage().then(() => updateFooter(ctx));
+    }
   });
 
   async function fetchUsage(): Promise<OpenRouterKeyInfo | null> {
