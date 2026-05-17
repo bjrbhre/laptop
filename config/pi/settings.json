@@ -1,11 +1,8 @@
 {
-  "lastChangelogVersion": "0.73.1",
   "defaultProvider": "openrouter",
   "defaultModel": "z-ai/glm-5.1",
   "extensions": [
-    "~/.agents/extensions",
-    "+../../../.agents/extensions/web-search.ts",
-    "+../../../.agents/extensions/clipboard.ts"
+    "~/.agents/extensions"
   ],
   "prompts": [
     "~/.agents/prompts"
@@ -17,6 +14,7 @@
       "extensions": [
         "-dist/index.js"
       ]
-    }
+    },
+    "../../agents/sandbox/pi-notion-mcp"
   ]
 }

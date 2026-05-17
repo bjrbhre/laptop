@@ -20,6 +20,14 @@ Finder Preferences:
 - [ ] Set sidebar content
 - [ ] Rearrange sidebar items
 
+## Git
+- [ ] Après un clone, recréer le filtre local pour ignorer les volatile-keys :
+  ```
+  git config --local filter.ignore-volatile-keys.clean 'jq -f .git/volatile-keys.jq'
+  git config --local filter.ignore-volatile-keys.smudge cat
+  ```
+  Les clés ignorées sont listées dans `.git/volatile-keys.jq`.
+
 ## Misc
 - [ ] Install [adobe-fonts/source-code-pro](https://github.com/adobe-fonts/source-code-pro)
 - [ ] https://github.com/asdf-community/asdf-direnv
