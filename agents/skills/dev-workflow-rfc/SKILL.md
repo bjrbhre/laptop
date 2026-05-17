@@ -145,7 +145,7 @@ Produce one file per step in `steps/<number>-<name>.md`. Each step spec is self-
 Document the review process within `rfc.md`:
 
 - Directory layout (as shown above)
-- File metadata: frontmatter contains only stable fields that never change across rounds (role, skills, provider, model, rfc, step, branch, reviewer). Per-round data (commit, timestamp, scope, verdict) lives in section headers
+- File metadata: frontmatter contains only stable fields that never change across rounds (role, skills, provider, model, rfc, step, branch). Per-round data (commit, timestamp, scope, verdict) lives in section headers
 - Rules: reviewers never touch code or `notes.md`, implementer never touches reviewer files, everything is append-only
 - Process: implement → review (parallel) → respond in `notes.md` → re-review if needed → tag → next step
 - Freeze rules and amendment process (see below)

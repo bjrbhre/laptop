@@ -41,6 +41,13 @@ Read `rfc/<project>/steps/<number>-<name>.md`. Also read `rfc/<project>/rfc.md` 
 
 If the spec references "the OAuth Reference section", go read that section in `rfc.md`. Do not guess.
 
+**Do not read anything else.** Specifically:
+- Do not read `reviews/` files from previous steps — they are review artifacts, not spec. The RFC and step specs are the single source of truth.
+- Do not read `notes.md` from previous steps — if a deferred item matters, the planner already propagated it into your step spec as a task.
+- Do not read `reviewer-*.md` from any step — reviewer files are off-limits, even for your own step.
+
+If you find yourself exploring the `reviews/` directory, stop. You already have everything you need.
+
 ### Step 2: Implement
 
 Follow the spec procedurally. Work top to bottom through the instructions.

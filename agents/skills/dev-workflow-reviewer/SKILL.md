@@ -85,7 +85,7 @@ step: N
 branch: <git branch — the branch under review>
 ---
 
-# Step N Review — <your-name>
+# Step N Review
 
 ## Round 1 — commit <hash> — <ISO 8601>
 
