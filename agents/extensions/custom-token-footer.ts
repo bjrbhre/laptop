@@ -69,7 +69,7 @@ export default function (pi: ExtensionAPI) {
 					const contextPercentValue = contextUsage?.percent ?? 0;
 					const contextPercent = contextUsage?.percent !== null ? contextPercentValue.toFixed(1) : "?";
 
-					// Build pwd line (current directory + git branch + session name)
+					// Build pwd line (current directory + git branch + session name + short ID)
 					let pwd = process.cwd();
 					const home = process.env.HOME || process.env.USERPROFILE;
 					if (home && pwd.startsWith(home)) {
@@ -81,7 +81,14 @@ export default function (pi: ExtensionAPI) {
 						pwd = `${pwd} (${branch})`;
 					}
 
-					const sessionName = ctx.sessionManager.getSessionName?.();
+					// Get short session ID
+					const sessionId = ctx.sessionManager.getSessionId?.() ?? "";
+					const shortId = sessionId.slice(0, 8);
+					if (shortId) {
+						pwd = `${pwd} [#${shortId}]`;
+					}
+
+					const sessionName = pi.getSessionName();
 					if (sessionName) {
 						pwd = `${pwd} • ${sessionName}`;
 					}
@@ -143,9 +150,9 @@ export default function (pi: ExtensionAPI) {
 								: `${modelName} • ${thinkingLevel}`;
 					}
 
-					// Provider in parentheses if multiple providers
+					// Show provider in parentheses
 					let rightSide = rightSideWithoutProvider;
-					if (footerData.getAvailableProviderCount() > 1 && ctx.model) {
+					if (ctx.model) {
 						rightSide = `(${ctx.model.provider}) ${rightSideWithoutProvider}`;
 						if (statsLeftWidth + 2 + visibleWidth(rightSide) > width) {
 							rightSide = rightSideWithoutProvider;
