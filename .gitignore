@@ -31,6 +31,9 @@ tmp/
 # ==========================================
 # 4. APP-SPECIFIC NOISE
 # ==========================================
+# git
+config/git/gitk
+
 # Neovim temporary state (even if symlinked)
 config/nvim/.netrwhist
 config/nvim/undo/
