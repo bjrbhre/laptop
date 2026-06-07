@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+beautifulsoup4
+lxml
+httpx
+python-dotenv
+mcp
+html-to-markdown
+curl_cffi

@@ -1,0 +1,11 @@
+services:
+  ddg-web-search:
+    build:
+      context: .
+    container_name: ddg-web-search
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - 8004:8000
+    environment:
+      PROXY_URL: ${PROXY_URL}

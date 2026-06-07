@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "ddg-web-search": {
+      "url": "http://localhost:8004/mcp"
+    }
+  }
+}
