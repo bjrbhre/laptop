@@ -13,7 +13,7 @@
  */
 
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { complete, getModel } from "@earendil-works/pi-ai";
+import { complete, getModel } from "@earendil-works/pi-ai/compat";
 import {
   Editor,
   type EditorTheme,
@@ -84,18 +84,40 @@ function namingPrompt(conversation: string): string {
   ].join("\n");
 }
 
-async function generateName(ctx: ExtensionContext): Promise<string | null> {
+async function generateName(ctx: ExtensionContext, notify: (msg: string) => void): Promise<string | null> {
   const branch = ctx.sessionManager.getBranch();
+  notify(`[namer] branch: ${branch.length} entries`);
   const conversation = buildConversationText(branch);
-  if (!conversation.trim()) return null;
+  notify(`[namer] conversation: ${conversation.length} chars`);
+  if (!conversation.trim()) {
+    notify(`[namer] ✗ empty conversation, aborting`);
+    return null;
+  }
 
   const model = getModel(PROVIDER, MODEL_ID);
-  if (!model) return null;
+  if (!model) {
+    notify(`[namer] ✗ getModel("${PROVIDER}", "${MODEL_ID}") returned null`);
+    return null;
+  }
+  notify(`[namer] model resolved: ${model.id}`);
 
   const auth = await ctx.modelRegistry.getApiKeyAndHeaders(model);
-  if (!auth?.ok || !auth.apiKey) return null;
+  if (!auth?.ok) {
+    notify(`[namer] ✗ auth failed: ${!auth ? "no auth" : auth.error}`);
+    return null;
+  }
+  notify(`[namer] auth ok (apiKey=${auth.apiKey ? "yes" : "no"}, headers=${auth.headers ? "yes" : "no"}, env=${auth.env ? "yes" : "no"}), calling complete()…`);
 
   try {
+    // Set env vars if provided (some providers use env-based auth)
+    const prevEnv: Record<string, string | undefined> = {};
+    if (auth.env) {
+      for (const [k, v] of Object.entries(auth.env)) {
+        prevEnv[k] = process.env[k];
+        process.env[k] = v;
+      }
+    }
+
     const res = await complete(
       model,
       {
@@ -112,7 +134,16 @@ async function generateName(ctx: ExtensionContext): Promise<string | null> {
       { apiKey: auth.apiKey, headers: auth.headers },
     );
 
-    if (res.stopReason === "aborted") return null;
+    // Restore env
+    for (const [k, v] of Object.entries(prevEnv)) {
+      if (v === undefined) delete process.env[k]; else process.env[k] = v;
+    }
+
+    if (res.stopReason === "aborted") {
+      notify(`[namer] ✗ complete() aborted`);
+      return null;
+    }
+    notify(`[namer] complete() ok, stopReason=${res.stopReason}`);
 
     return (
       res.content
@@ -125,7 +156,8 @@ async function generateName(ctx: ExtensionContext): Promise<string | null> {
         .trim()
         .slice(0, MAX_NAME) || null
     );
-  } catch {
+  } catch (err) {
+    notify(`[namer] ✗ complete() threw: ${err instanceof Error ? err.message : String(err)}`);
     return null;
   }
 }
@@ -165,7 +197,7 @@ async function nameSession(
 
     // Kick off generation if we don't have a name yet
     if (!defaultName) {
-      generateName(ctx).then((name) => {
+      generateName(ctx, (msg) => ctx.ui.notify(msg, "info")).then((name) => {
         if (cancelled) return;
         if (name) editor.setText(name);
         state = "editing";
