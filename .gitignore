@@ -48,6 +48,7 @@ config/pi/auth.json
 config/pi/sessions/
 config/pi/sessions-analysis/
 config/pi/models.json
+config/pi/models-store.json
 config/pi/notion-mcp-auth.json
 config/pi/npm/
 config/pi/trust.json
