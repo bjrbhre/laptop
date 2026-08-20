@@ -127,7 +127,11 @@ export default function (pi: ExtensionAPI) {
 
 	pi.on("agent_end", (_event, ctx) => {
 		if (isCortecsActive) {
-			fetchBalance().then(() => updateFooter(ctx));
+			// fetchBalance() is async and may resolve after the session is disposed
+			// in headless mode, so guard the post-fetch footer update.
+			fetchBalance()
+				.then(() => updateFooter(ctx))
+				.catch(() => {});
 		}
 	});
 
@@ -192,7 +196,13 @@ export default function (pi: ExtensionAPI) {
 	}
 
 	function persistState() {
-		pi.appendEntry(STATE_KEY, state);
+		try {
+			pi.appendEntry(STATE_KEY, state);
+		} catch {
+			// Session was disposed (e.g. headless --mode json tears down immediately
+			// after agent_end) before this async fetch resolved. The captured `pi`
+			// ctx is now stale; dropping the persist is safe — state is in-memory.
+		}
 	}
 
 	function formatCurrency(amount: number, currency: string): string {
@@ -230,35 +240,44 @@ export default function (pi: ExtensionAPI) {
 	function updateFooter(ctx?: any) {
 		if (!isCortecsActive) return;
 
+		let status: string | undefined;
+		let clear = false;
+
 		if (state.error) {
 			if (state.error.includes("Requires management API key")) {
-				ctx?.ui?.setStatus("usage-cortecs", undefined);
+				clear = true;
 			} else {
-				ctx?.ui?.setStatus("usage-cortecs", `❌ ${state.error}`);
+				status = `❌ ${state.error}`;
 			}
-			return;
+		} else if (state.balance) {
+			const { current_balance, currency } = state.balance;
+			const cap = getSpendingCap();
+			const parts: string[] = ["💳"];
+
+			if (cap != null) {
+				const spent = cap - current_balance;
+				const spentPct = Math.min(100, Math.max(0, (spent / cap) * 100));
+				parts.push(`${formatCurrency(Math.max(0, spent), currency)} [${makeProgressBar(spentPct)}] ${spentPct.toFixed(0)}%`);
+				if (current_balance > 0) {
+					parts.push(`~${formatCurrency(current_balance, currency)} left`);
+				} else {
+					parts.push("cap reached");
+				}
+			} else {
+				parts.push(formatCurrency(current_balance, currency));
+			}
+
+			status = parts.join(" ");
 		}
 
-		if (!state.balance) return;
-
-		const { current_balance, currency } = state.balance;
-		const cap = getSpendingCap();
-		const parts: string[] = ["💳"];
-
-		if (cap != null) {
-			const spent = cap - current_balance;
-			const spentPct = Math.min(100, Math.max(0, (spent / cap) * 100));
-			parts.push(`${formatCurrency(Math.max(0, spent), currency)} [${makeProgressBar(spentPct)}] ${spentPct.toFixed(0)}%`);
-			if (current_balance > 0) {
-				parts.push(`~${formatCurrency(current_balance, currency)} left`);
-			} else {
-				parts.push("cap reached");
-			}
-		} else {
-			parts.push(formatCurrency(current_balance, currency));
+		// ctx may be stale if the session was disposed before this async footer
+		// update ran (headless --mode json tears down immediately after agent_end).
+		// Guard the disposal-sensitive UI call so we never throw post-dispose.
+		try {
+			ctx?.ui?.setStatus("usage-cortecs", clear ? undefined : status);
+		} catch {
+			/* session disposed; skip UI update */
 		}
-
-		ctx?.ui?.setStatus("usage-cortecs", parts.join(" "));
 	}
 
 	pi.registerCommand("cortecs-balance", {
