@@ -1,22 +1,24 @@
 {
-  "defaultProvider": "openrouter",
-  "defaultModel": "z-ai/glm-5.1",
-  "lastChangelogVersion": "0.74.0",
+  "defaultProvider": "cortecs",
+  "defaultModel": "glm-5.2",
   "extensions": [
     "~/.agents/extensions"
   ],
   "prompts": [
     "~/.agents/prompts"
   ],
-  "defaultThinkingLevel": "high",
+  "defaultThinkingLevel": "minimal",
+  "httpIdleTimeoutMs": 900000,
+  "websocketConnectTimeoutMs": 30000,
+  "retry": {
+    "provider": {
+      "timeoutMs": 3600000
+    }
+  },
+  "transport": "websocket-cached",
   "packages": [
-    {
-      "source": "npm:pi-smart-fetch",
-      "extensions": [
-        "-dist/index.js"
-      ]
-    },
-    "../../agents/sandbox/pi-notion-mcp",
-    "npm:pi-cortecs"
-  ]
+    "npm:pi-cortecs",
+    "../../../Code/agent-stack/pi-notion-mcp"
+  ],
+  "theme": "dark"
 }
