@@ -44,6 +44,21 @@ alias vim='nvim'
 alias pic='pi --continue'
 alias pir='pi --resume'
 alias π='pi'
+pi--stream() {
+  pi "$@" --mode json 2>/dev/null | jq -r '
+    select(.type == "turn_end")
+    | .message.content[]
+    | if .type == "thinking" then
+        "🧠 Raisonnement :\n\(.thinking)\n"
+      elif .type == "text" then
+        "💬 Réponse :\n\(.text)"
+      else
+        empty
+      end
+  '
+}
+# open a markdown file in cmux viewer panel (live reload)
+alias mdv='cmux markdown open'
 
 # date with YYYY-MM-DD format
 alias today='date +%Y-%m-%d'
