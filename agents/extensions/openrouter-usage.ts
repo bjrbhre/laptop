@@ -165,7 +165,13 @@ export default function (pi: ExtensionAPI) {
   // updates as soon as the network response arrives, not blocking the turn.
   pi.on("agent_end", (_event, ctx) => {
     if (isOpenRouterActive) {
-      fetchUsage().then(() => updateFooter(ctx));
+      fetchUsage().then(() => {
+        try {
+          updateFooter(ctx);
+        } catch {
+          // Extension ctx may be stale after pi --print session teardown
+        }
+      });
     }
   });
 
@@ -224,7 +230,12 @@ export default function (pi: ExtensionAPI) {
   }
 
   function persistState() {
-    pi.appendEntry(STATE_KEY, state);
+    try {
+      pi.appendEntry(STATE_KEY, state);
+    } catch {
+      // Extension ctx may be stale after pi --print session teardown
+      // Safely ignore — state is ephemeral footer info
+    }
   }
 
   function formatDollars(dollars: number): string {
