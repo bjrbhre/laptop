@@ -1,0 +1,60 @@
+{
+  "providers": {
+    "cortecs": {
+      "modelOverrides": {
+        "glm-5.2": {
+          "contextWindow": 1048576,
+          "cost": {
+            "input": 1.23,
+            "output": 3.74,
+            "cacheRead": 0.123,
+            "cacheWrite": 0
+          },
+          "samplingParams": {
+            "allowed_providers": ["tensorix"]
+          }
+        },
+      }
+    },
+    "openrouter": {
+      "modelOverrides": {
+        "moonshotai/kimi-k2.6": {
+          "maxTokens": 16384
+        },
+        "qwen/qwen3.6-plus": {
+          // "name": "Qwen 3.6 Plus",
+          // "reasoning": true,
+          "compat": {
+            "supportsDeveloperRole": false
+            // "supportsReasoningEffort": false,
+            // "thinkingFormat": "qwen"
+          }
+        },
+        "qwen/qwen3.7-max": {
+          "compat": {
+            "supportsDeveloperRole": false
+          }
+        }
+      }
+    },
+    "omlx": {
+      "baseUrl": "http://localhost:8000/v1",
+      "api": "openai-completions",
+      "apiKey": "BD!BBW@Bh-7Z3bc!o2t**Ck!acw74.VfJ4qHffMnaD4h3mnPB448bQ*-tgdw8BM3Fm.N-p.@PrAhfbF-rR-RBn@Z2.YQDY@A.iMu",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "gemma-4-e4b-it-8bit",
+          "name": "Gemma 4 E4B (Local MLX)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 32768,
+          "maxTokens": 32768
+        }
+      ]
+    }
+  }
+}
